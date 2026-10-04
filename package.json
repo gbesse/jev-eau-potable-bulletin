@@ -1,6 +1,6 @@
 {
   "name": "@gbesse/jev-eau-potable-bulletin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Produit un bulletin de vigilance compréhensible à partir de résultats de contrôle de l’eau potable sourcés.",
   "type": "module",
   "license": "MIT",
