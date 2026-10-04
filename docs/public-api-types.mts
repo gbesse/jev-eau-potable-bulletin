@@ -14,4 +14,14 @@ const dossier = waterControlCase({
   }
 });
 void DECISIONS;
-void assessWaterBulletin(dossier, createFakeProvider(() => ({})));
+void assessWaterBulletin(dossier, createFakeProvider(() => ({ model: "jev-1.13.0", answers: { decision: { type: "choice", choice: "attention_supported", probabilities: { "attention_supported": 0.82, "review_required": 0.06, "stable": 0.06, "no_measurement": 0.06 }, confidence: 0.82 } } })));
+
+// Ces erreurs attendues protègent le contrat des consommateurs TypeScript.
+// @ts-expect-error — un fournisseur doit retourner une réponse Jev complète.
+createFakeProvider(() => ({}));
+const result = await assessWaterBulletin(dossier, createFakeProvider(() => ({ model: "jev-1.13.0", answers: {} })));
+const review: boolean = result.review;
+void review;
+// @ts-expect-error — la revue humaine est un booléen.
+const incorrect: string = result.review;
+void incorrect;
